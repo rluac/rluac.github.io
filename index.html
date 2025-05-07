@@ -3,43 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jann Hub</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <title>jann hub</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Segoe UI',sans-serif;background:#000;color:#fff;min-height:100vh}
-    .container{max-width:960px;margin:0 auto;padding:2rem}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
-    .hero{text-align:center;padding-bottom:2rem;animation:fadeIn 1s both}
-    .hero h1{font-size:3rem;background:linear-gradient(90deg,#888,#555);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadeInUp 1s both}
-    .hero p{margin-top:.5rem;color:#bbb;animation:fadeInUp 1.2s both;font-size:1.1rem}
+    .hero { text-align: center; padding-bottom: 2rem; animation: fadeIn 1s both; }
+    .hero h1 { font-size: 3rem; background: linear-gradient(90deg,#888,#555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: lowercase; animation: fadeInUp 1s both; }
+    .hero p { margin-top: .5rem; color: #bbb; font-size: 1.1rem; text-transform: lowercase; animation: fadeInUp 1.2s both; }
 
-    .btn-group{margin:2rem 0;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-    .btn{padding:.8rem 2rem;border-radius:6px;background:#111;border:1px solid #333;color:#eee;font-weight:600;letter-spacing:.5px;transition:background .3s,border-color .3s,transform .3s}
-    .btn:hover{background:#222;border-color:#555;transform:translateY(-2px)}
+    .btn-group { margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: .8rem 2rem; border-radius: 6px; background: #111; border: 1px solid #333; color: #eee; font-weight: 600; text-transform: lowercase; transition: background .3s, border-color .3s, transform .3s; }
+    .btn:hover { background: #222; border-color: #555; transform: translateY(-2px); }
 
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .code-box{display:none;position:relative;margin:2rem 0;padding:1.5rem;background:rgba(20,20,20,0.8);border:1px solid #444;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,.8);backdrop-filter:blur(4px);animation:fadeIn 1s both}
-    .code-box header{display:flex;justify-content:space-between;align-items:center;padding-bottom:.5rem;border-bottom:1px solid #333;color:#bbb}
-    .code-box header span{font-size:.9rem}
-    .btn-copy-code{padding:.3rem .6rem;background:#444;border:none;border-radius:4px;color:#eee;cursor:pointer;transition:background .3s}
-    .btn-copy-code:hover{background:#555}
-    pre{margin:0;padding-top:1rem;overflow-x:auto;color:#eee;font-size:0.95rem}
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
+    .card { background: rgba(20,20,20,0.8); border: 1px solid #333; border-radius: 8px; backdrop-filter: blur(6px); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform .3s, border-color .3s, background .3s; }
+    .card:hover { transform: translateY(-4px); border-color: #555; background: rgba(30,30,30,0.9); }
+    .card svg { width: 40px; height: 40px; margin-bottom: 1rem; fill: #f9d423; }
+    .card h3 { font-size: 1.3rem; color: #fff; margin-bottom: .5rem; text-transform: lowercase; }
+    .card p { font-size: .95rem; color: #ccc; line-height: 1.4; text-transform: lowercase; }
 
-    footer{margin-top:3rem;text-align:center;color:#555;font-size:.8rem}
-    footer a{color:#777;transition:color .3s}
-    footer a:hover{color:#bbb}
+    .code-box { display: none; margin: 2rem 0; padding: 1.5rem; background: rgba(20,20,20,0.8); border: 1px solid #444; border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.8); backdrop-filter: blur(4px); animation: fadeIn 1s both; }
+    .code-box header { display: flex; justify-content: space-between; align-items: center; padding-bottom: .5rem; border-bottom: 1px solid #333; color: #bbb; }
+    .code-box header span { font-size: .9rem; text-transform: lowercase; }
+    .btn-copy-code { padding: .3rem .6rem; background: #444; border: none; border-radius: 4px; color: #eee; cursor: pointer; transition: background .3s; text-transform: lowercase; }
+    .btn-copy-code:hover { background: #555; }
+    pre { margin: 0; padding-top: 1rem; overflow-x: auto; color: #eee; font-size: .95rem; }
+
+    footer { margin-top: 3rem; text-align: center; color: #555; font-size: .8rem; text-transform: lowercase; }
+    footer a { color: #777; transition: color .3s; text-transform: lowercase; }
+    footer a:hover { color: #bbb; }
   </style>
 </head>
 <body>
   <div class="container">
     <section class="hero">
-      <h1>a total roblox drama script</h1>
+      <h1>jann hub</h1>
+      <p>the ultimate total roblox drama toolkit</p>
       <div class="btn-group">
         <button id="showScript" class="btn">view script</button>
         <button id="copyLoad" class="btn">copy loadstring</button>
-        <a href="https://discord.gg/jannproducts" target="_blank" class="btn">join discord</a>
+        <a href="https://discord.gg/jannproducts" class="btn" target="_blank">join discord</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <svg viewBox="0 0 24 24"><path d="M7 2a1 1 0 00-1 1v2H4a1 1 0 100 2h2v2a1 1 0 102 0V7h2a1 1 0 100-2H7V3a1 1 0 00-1-1z"/></svg>
+        <h3>key system</h3>
+        <p>join our discord and retrieve your key instantly to unlock jann hub</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24"><path d="M12 2l1.176 3.618h3.807l-3.08 2.238 1.176 3.618L12 9.236l-3.079 2.238 1.176-3.618-3.08-2.238h3.806L12 2z"/></svg>
+        <h3>good features</h3>
+        <p>auto-win blockpush, kill everyone in sword fight, see jury votes, teleports</p>
       </div>
     </section>
 
@@ -48,7 +70,7 @@
         <span>script.lua</span>
         <button class="btn-copy-code" id="copyBtn">copy</button>
       </header>
-      <pre><code class="language-lua" id="codeText">loadstring(game:HttpGet("https://raw.githubusercontent.com/rluac/JannHub/refs/heads/main/loader.lua"))()</code></pre>
+      <pre><code class="language-lua" id="codeText">loadstring(game:HttpGet("https://pastebin.com/raw/WHVAishp"))()</code></pre>
     </section>
 
     <footer>
@@ -58,14 +80,14 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script>
-    const codeBox=document.getElementById('codeBox');
-    document.getElementById('showScript').onclick=()=>{
-      codeBox.style.display = codeBox.style.display==='block'?'none':'block';
-      codeBox.scrollIntoView({behavior:'smooth'});
+    const codeBox = document.getElementById('codeBox');
+    document.getElementById('showScript').onclick = () => {
+      codeBox.style.display = codeBox.style.display === 'block' ? 'none' : 'block';
+      codeBox.scrollIntoView({ behavior: 'smooth' });
     };
-    function copyToClipboard(text){navigator.clipboard.writeText(text).then(()=>alert('Copied!'));}
-    document.getElementById('copyLoad').addEventListener('click',()=>copyToClipboard(document.getElementById('codeText').textContent));
-    document.getElementById('copyBtn').addEventListener('click',()=>copyToClipboard(document.getElementById('codeText').textContent));
+    function copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => alert('copied!')); }
+    document.getElementById('copyLoad').addEventListener('click', () => copyToClipboard(document.getElementById('codeText').textContent));
+    document.getElementById('copyBtn').addEventListener('click', () => copyToClipboard(document.getElementById('codeText').textContent));
   </script>
 </body>
 </html>
