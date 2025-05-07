@@ -11,6 +11,19 @@
     body{font-family:'Segoe UI',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
     .container{max-width:900px;margin:0 auto;padding:2rem}
 
+    .status {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid #2ecc71;
+      color: #2ecc71;
+      font-size: 0.9rem;
+      z-index: 100;
+    }
+
     .hero{text-align:center;padding-bottom:2rem;animation:fadeIn 1s both}
     .hero h1{font-size:3rem;background:linear-gradient(90deg,#888,#555);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:lowercase;animation:fadeInUp 1s both}
     .btn-group{margin:2rem 0;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
@@ -50,12 +63,15 @@
   </style>
 </head>
 <body>
+  <div class="status"></div>
+  
   <div class="container">
     <section class="hero">
       <h1>jann hub</h1>
       <div class="btn-group">
         <button id="showFAQ" class="btn">faq</button>
         <button id="showFeatures" class="btn">features</button>
+        <a href="https://keyrblx.com/getkey/JannHub" class="btn" target="_blank">get key</a>
         <a href="https://discord.gg/jannproducts" class="btn" target="_blank">join discord</a>
         <button id="showLoadstring" class="btn">show loadstring</button>
       </div>
@@ -94,6 +110,26 @@
   </footer>
 
   <script>
+    let currentStatus = 'working';
+    
+    const statusConfig = {
+      working: {
+        text: 'status: working',
+        color: '#2ecc71'
+      },
+      down: {
+        text: 'status: down',
+        color: '#e74c3c'
+      }
+    };
+
+    const statusElement = document.querySelector('.status');
+    function updateStatus() {
+      statusElement.textContent = statusConfig[currentStatus].text;
+      statusElement.style.borderColor = statusConfig[currentStatus].color;
+    }
+    updateStatus();
+
     const modalBg = document.getElementById('modalBg');
     const titleEl = document.getElementById('modalTitle');
     const contentEl = document.getElementById('modalContent');
@@ -101,7 +137,7 @@
 
     const data = {
       features: {
-        title: 'features',
+        title: 'main features',
         html: `<h3>main features</h3>
               <ul>
                 <li>infinite yield - loads the infinite yield command script</li>
