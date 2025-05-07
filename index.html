@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>jann hub</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/461Dvff/daea98d58dd18ccdfadb446531e6162d-1-modified.png">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Segoe UI',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
@@ -19,20 +20,26 @@
     .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;padding:2rem 0}
     .card{background:rgba(20,20,20,0.8);border:1px solid #333;border-radius:8px;backdrop-filter:blur(6px);padding:2rem 1.5rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .3s,border-color .3s,background .3s}
     .card:hover{transform:translateY(-4px);border-color:#555;background:rgba(30,30,30,0.9)}
-    .card svg{width:40px;height:40px;margin-bottom:1rem;fill:#f9d423}
+    .card svg{width:32px;height:32px;margin-bottom:1rem;fill:#fff}
     .card h3{font-size:1.3rem;color:#fff;margin-bottom:.5rem;text-transform:lowercase}
     .card p{font-size:.95rem;color:#ccc;line-height:1.4;text-transform:lowercase}
 
     .modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:10}
-    .modal{background:#111;border:1px solid #333;border-radius:8px;max-width:600px;width:90%;padding:1.5rem;position:relative;animation:modalSlideIn .3s ease-out}
-    .modal .close{position:absolute;top:0.5rem;right:0.8rem;color:#fff;font-size:1.5rem;cursor:pointer}
-    .modal .copy-key{position:absolute;top:1rem;left:1rem;background:#444;border:none;border-radius:4px;color:#fff;padding:.4rem .8rem;cursor:pointer;transition:background .3s}
+    .modal{background:#111;border:1px solid #333;border-radius:8px;max-width:600px;width:90%;padding:1.5rem;position:relative;animation:modalSlideIn .3s ease-out;max-height:80vh;display:flex;flex-direction:column}
+    .modal .close{position:absolute;top:1rem;right:1rem;color:#fff;font-size:1.5rem;cursor:pointer;line-height:1;z-index:2}
+    .modal .copy-key{position:absolute;top:1rem;right:4.5rem;background:#444;border:none;border-radius:4px;color:#fff;padding:.4rem .8rem;cursor:pointer;transition:background .3s;display:none;z-index:2}
     .modal .copy-key:hover{background:#555}
-    .modal h2{margin-bottom:1rem;text-transform:lowercase}
-    .modal p, .modal li{color:#ccc;text-transform:lowercase;line-height:1.4;font-size:.95rem}
-    .modal ul{list-style:disc inside;margin-left:1rem;margin-bottom:1rem}
-    .modal textarea{width:100%;height:120px;background:#000;color:#fff;border:1px solid #444;border-radius:4px;padding:.8rem;font-family:monospace;font-size:.9rem;margin-bottom:1rem}
-    .modal svg{width:40px;height:40px;margin-bottom:1rem;fill:#f9d423}
+    .modal h2{margin-bottom:1rem;text-transform:lowercase;position:sticky;top:0;background:#111;padding:1rem 0;z-index:1}
+    #modalContent{overflow-y:auto;padding-right:10px;max-height:calc(80vh - 100px)}
+    #modalContent::-webkit-scrollbar{width:6px}
+    #modalContent::-webkit-scrollbar-track{background:#222;border-radius:3px}
+    #modalContent::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
+    .modal h3{color:#fff;margin:1.5rem 0 0.5rem;font-size:1.1rem}
+    .modal pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;white-space:pre-wrap}
+    .modal code{color:#fff;font-family:monospace}
+    .modal ul{list-style:none;margin:0;padding:0}
+    .modal li{padding:0.3rem 0;color:#ccc}
+    .modal strong{color:#fff}
 
     footer{margin-top:3rem;text-align:center;color:#555;font-size:.8rem;text-transform:lowercase}
     footer a{color:#777;transition:color .3s;text-transform:lowercase}
@@ -48,28 +55,27 @@
       <h1>jann hub</h1>
       <div class="btn-group">
         <button id="showFAQ" class="btn">faq</button>
-        <button id="showFeat" class="btn">features</button>
-        <button id="showToggles" class="btn">toggles</button>
-        <button id="showTele" class="btn">teleports</button>
-        <button id="showActions" class="btn">special actions</button>
+        <button id="showFeatures" class="btn">features</button>
+        <a href="https://discord.gg/jannproducts" class="btn" target="_blank">join discord</a>
+        <button id="showLoadstring" class="btn">show loadstring</button>
       </div>
     </section>
 
     <section class="features">
       <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M7 2a1 1 0 00-1 1v2H4a1 1 0 100 2h2v2a1 1 0 102 0V7h2a1 1 0 100-2H7V3a1 1 0 00-1-1z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M15.75 5.25a3 3 0 0 1 3 3c0 3.476-5.45 7.013-6.863 8.4a.751.751 0 0 1-1.127-.112C10.55 15.263 5.25 11.726 5.25 8.25a3 3 0 0 1 3-3c1.036 0 2.1.745 3 2.25.9-1.505 1.964-2.25 3-2.25z"/></svg>
         <h3>key system</h3>
-        <p>all you have to do is use the key link, join the discord via the button, wait 30 seconds, go back, and you should be able to unlock it!</p>
+        <p>use the key link, join discord, wait 30 seconds, and unlock access!</p>
       </div>
       <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M12 2l1.176 3.618h3.807l-3.08 2.238 1.176 3.618L12 9.236l-3.079 2.238 1.176-3.618-3.08-2.238h3.806L12 2z"/></svg>
-        <h3>good features</h3>
-        <p>auto-win blockpush<br>kill everyone in sword fight<br>see jury votes<br>teleports</p>
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5zM4 8.46l6 3.01v7.53l-6-3.23V8.46zm8 10.54v-7.53l6-3.01v7.77l-6 3.23z"/></svg>
+        <h3>features</h3>
+        <p>auto-win blockpush<br>kill everyone in sword fight (sometimes bugs)<br>see jury votes<br>teleports</p>
       </div>
       <div class="card">
-        <svg viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>
-        <h3>good discord booster perks</h3>
-        <p>1 boost gets you a 30 day key<br>3 boosts get you admin commands that work on jann hub users + a 1 year key</p>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <h3>booster perks</h3>
+        <p>exclusive benefits for discord boosters</p>
       </div>
     </section>
   </div>
@@ -89,68 +95,68 @@
 
   <script>
     const modalBg = document.getElementById('modalBg');
-    const modal = document.getElementById('modal');
     const titleEl = document.getElementById('modalTitle');
     const contentEl = document.getElementById('modalContent');
     const copyBtn = document.getElementById('copyModal');
-    const closeBtn = document.getElementById('closeModal');
 
     const data = {
+      features: {
+        title: 'main features',
+        html: `<h3>main features</h3>
+              <ul>
+                <li>infinite yield - loads the infinite yield command script</li>
+                <li>mobile keyboard - loads a mobile-compatible keyboard script</li>
+                <li>chat spy - loads a script to spy on chat</li>
+                <li>fake lag - simulates fake lag in the game</li>
+                <li>energize - loads animation script for character</li>
+                <li>shaders - loads rtx shaders</li>
+                <li>see everyone's users - displays usernames above heads</li>
+                <li>win obby - auto-finish obstacle courses</li>
+                <li>get safety statue - teleports statue to you</li>
+                <li>kill everyone in sword fight - instant combat win</li>
+                <li>expand hitboxes - modify player hitboxes</li>
+                <li>insta-eat pancake - automatic pancake consumption</li>
+              </ul>
+
+              <h3>toggles</h3>
+              <ul>
+                <li>auto-collect coins & gems</li>
+                <li>notify votes - vote notifications</li>
+                <li>expose votes - show vote details in chat</li>
+                <li>store vote logs - historical vote tracking</li>
+                <li>auto-win math mania - automatic math solver</li>
+                <li>statue notifications - alert when statue is taken</li>
+              </ul>
+
+              <h3>teleports</h3>
+              <ul>
+                <li>confessionals</li>
+                <li>challenge area</li>
+                <li>exile location</li>
+                <li>spectator island</li>
+                <li>dock</li>
+                <li>voting area</li>
+              </ul>
+
+              <h3>special actions</h3>
+              <ul>
+                <li>break spleef - remove spleef parts automatically</li>
+              </ul>`
+      },
+      loadstring: {
+        title: 'loadstring',
+        html: `<pre><code>loadstring(game:HttpGet("https://raw.githubusercontent.com/rluac/JannHub/main/loader.lua"))()</code></pre>`
+      },
       faq: {
-        title:'faq',
-        html:'<ul>'+
-             '<li><strong>q: will we branch into other games?</strong><br>a: soon, there isn\'t a confirmed date and it\'s not confirmed at all.</li>'+
-             '<li><strong>q: why can\'t you add my idea?</strong><br>a: we could be busy, there\'s no possible way, or we are just lazy.</li>'+
-             '<li><strong>q: how do i get a key?</strong><br>a: get a key from here: https://keyrblx.com/getkey/JannHub. once you have joined the discord server, go back to the page and wait 30 seconds. it should then allow you to press \'continue\' and you will get a key. please note if any popups show, just close them and go back to the key site.</li>'+
-             '<li><strong>q: how do i make my character my own avatar?</strong><br>a: wait until it\'s free gender selection, when the timer hits 00:03, click the 3 lines and press return to lobby, then wait 20 seconds & join back, then execute the script and buy your character.</li>'+
-             '<li><strong>q: why won\'t the ui load?</strong><br>a: it\'s because we\'re often adding new features, however sometimes there are errors and it causes the ui to not load.</li>'+
-             '<li><strong>q: why won\'t a feature work?</strong><br>a: we aren\'t that good of script developers, so some features won\'t work.</li>'+
-             '</ul>'
-      },
-      feat: {
-        title:'features',
-        html:'<ul>'+
-             '<li><strong>infinite yield</strong>: loads the infinite yield command script.</li>'+
-             '<li><strong>mobile keyboard</strong>: loads a mobile-compatible keyboard script.</li>'+
-             '<li><strong>chat spy</strong>: loads a script to spy on chat.</li>'+
-             '<li><strong>fake lag</strong>: simulates fake lag in the game.</li>'+
-             '<li><strong>energize</strong>: loads an animation script to energize your character.</li>'+
-             '<li><strong>shaders</strong>: loads rtx shaders to enhance the visual experience.</li>'+
-             '<li><strong>see everyone's users</strong>: displays usernames above players' heads.</li>'+
-             '<li><strong>win obby</strong>: automatically teleports you to the finish line in an obby.</li>'+
-             '<li><strong>get safety statue</strong>: teleports the safety statue to your character.</li>'+
-             '<li><strong>kill everyone in sword fight</strong>: executes a script to kill all players in a sword-fighting game.</li>'+
-             '<li><strong>expand everyone's hitbox</strong>: expands or modifies players' hitboxes.</li>'+
-             '<li><strong>insta-eat pancake</strong>: automatically eats your pancake in the game.</li>'+
-             '</ul>'
-      },
-      toggles: {
-        title:'toggles',
-        html:'<ul>'+
-             '<li><strong>auto-collect coins & gems</strong>: automatically collects coins and gems.</li>'+
-             '<li><strong>notify votes</strong>: sends a notification when a vote is cast.</li>'+
-             '<li><strong>expose votes</strong>: sends vote details in chat.</li>'+
-             '<li><strong>store vote logs</strong>: stores vote information in a vote logs category.</li>'+
-             '<li><strong>auto-win math mania</strong>: automatically solves and wins the Math Mania game.</li>'+
-             '<li><strong>notify when a user gets the statue</strong>: notifies when a user collects the statue.</li>'+
-             '</ul>'
-      },
-      tele: {
-        title:'teleports',
-        html:'<ul>'+
-             '<li><strong>confessionals</strong>: teleports to the confessionals.</li>'+
-             '<li><strong>challenge</strong>: teleports to the challenge area.</li>'+
-             '<li><strong>exile</strong>: teleports to the exile location.</li>'+
-             '<li><strong>spectator island</strong>: teleports to the spectator island.</li>'+
-             '<li><strong>dock</strong>: teleports to the dock.</li>'+
-             '<li><strong>voting area</strong>: teleports to the voting area.</li>'+
-             '</ul>'
-      },
-      actions: {
-        title:'special actions',
-        html:'<ul>'+
-             '<li><strong>break spleef</strong>: removes all spleef parts beneath your character by interacting with them.</li>'+
-             '</ul>'
+        title: 'faq',
+        html: `<ul>
+                <li><strong>q: will we branch into other games?</strong><br>a: soon, there isn't a confirmed date and it's not confirmed at all.</li>
+                <li><strong>q: why can't you add my idea?</strong><br>a: we could be busy, there's no possible way, or we are just lazy.</li>
+                <li><strong>q: how do i get a key?</strong><br>a: get a key from here: https://keyrblx.com/getkey/JannHub. once you have joined the discord server, go back to the page and wait 30 seconds. it should then allow you to press 'continue' and you will get a key. please note if any popups show, just close them and go back to the key site.</li>
+                <li><strong>q: how do i make my character my own avatar?</strong><br>a: wait until it's free gender selection, when the timer hits 00:03, click the 3 lines and press return to lobby, then wait 20 seconds & join back, then execute the script and buy your character.</li>
+                <li><strong>q: why won't the ui load?</strong><br>a: it's because we're often adding new features, however sometimes there are errors and it causes the ui to not load.</li>
+                <li><strong>q: why won't a feature work?</strong><br>a: we aren't that good of script developers, so some features won't work.</li>
+              </ul>`
       }
     };
 
@@ -158,18 +164,18 @@
       const info = data[key];
       titleEl.textContent = info.title;
       contentEl.innerHTML = info.html;
+      copyBtn.style.display = key === 'loadstring' ? 'block' : 'none';
       modalBg.style.display = 'flex';
     }
-    document.getElementById('showFAQ').onclick = ()=>openModal('faq');
-    document.getElementById('showFeat').onclick = ()=>openModal('feat');
-    document.getElementById('showToggles').onclick = ()=>openModal('toggles');
-    document.getElementById('showTele').onclick = ()=>openModal('tele');
-    document.getElementById('showActions').onclick = ()=>openModal('actions');
 
-    closeBtn.onclick = ()=>{modalBg.style.display='none'};
-    copyBtn.onclick = ()=>{navigator.clipboard.writeText(contentEl.textContent);};
-    modalBg.addEventListener('click', (e) => {if(e.target === modalBg) modalBg.style.display='none'});
-    document.addEventListener('keydown', (e) => {if(e.key === 'Escape') modalBg.style.display='none'});
+    document.getElementById('showFeatures').onclick = () => openModal('features');
+    document.getElementById('showLoadstring').onclick = () => openModal('loadstring');
+    document.getElementById('showFAQ').onclick = () => openModal('faq');
+
+    document.getElementById('closeModal').onclick = () => modalBg.style.display = 'none';
+    copyBtn.onclick = () => navigator.clipboard.writeText('loadstring(game:HttpGet("https://raw.githubusercontent.com/rluac/JannHub/main/loader.lua"))()');
+    modalBg.addEventListener('click', (e) => e.target === modalBg ? modalBg.style.display = 'none' : null);
+    document.addEventListener('keydown', (e) => e.key === 'Escape' ? modalBg.style.display = 'none' : null);
   </script>
 </body>
 </html>
