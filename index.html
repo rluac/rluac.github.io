@@ -6,49 +6,52 @@
   <title>jann hub</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; min-height: 100vh; }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:#000;color:#fff;min-height:100vh;overflow-x:hidden}
+    .container{max-width:900px;margin:0 auto;padding:2rem}
 
-    .hero { text-align: center; padding-bottom: 2rem; animation: fadeIn 1s both; }
-    .hero h1 { font-size: 3rem; background: linear-gradient(90deg,#888,#555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: lowercase; animation: fadeInUp 1s both; }
-    .hero p { margin-top: .5rem; color: #bbb; font-size: 1.1rem; text-transform: lowercase; animation: fadeInUp 1.2s both; }
+    .hero{text-align:center;padding-bottom:2rem;animation:fadeIn 1s both}
+    .hero h1{font-size:3rem;background:linear-gradient(90deg,#888,#555);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:lowercase;animation:fadeInUp 1s both}
+    .btn-group{margin:2rem 0;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{padding:.8rem 2rem;border-radius:6px;background:#111;border:1px solid #333;color:#eee;font-weight:600;text-transform:lowercase;transition:background .3s,border-color .3s,transform .3s}
+    .btn:hover{background:#222;border-color:#555;transform:translateY(-2px)}
 
-    .btn-group { margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: .8rem 2rem; border-radius: 6px; background: #111; border: 1px solid #333; color: #eee; font-weight: 600; text-transform: lowercase; transition: background .3s, border-color .3s, transform .3s; }
-    .btn:hover { background: #222; border-color: #555; transform: translateY(-2px); }
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;padding:2rem 0}
+    .card{background:rgba(20,20,20,0.8);border:1px solid #333;border-radius:8px;backdrop-filter:blur(6px);padding:2rem 1.5rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .3s,border-color .3s,background .3s}
+    .card:hover{transform:translateY(-4px);border-color:#555;background:rgba(30,30,30,0.9)}
+    .card svg{width:40px;height:40px;margin-bottom:1rem;fill:#f9d423}
+    .card h3{font-size:1.3rem;color:#fff;margin-bottom:.5rem;text-transform:lowercase}
+    .card p{font-size:.95rem;color:#ccc;line-height:1.4;text-transform:lowercase}
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:10}
+    .modal{background:#111;border:1px solid #333;border-radius:8px;max-width:600px;width:90%;padding:1.5rem;position:relative;}
+    .modal .close{position:absolute;top:1rem;right:1rem;color:#bbb;font-size:1.2rem;cursor:pointer;text-transform:none}
+    .modal .copy-key{position:absolute;top:1rem;left:1rem;background:#444;border:none;border-radius:4px;color:#eee;padding:.4rem .8rem;cursor:pointer;text-transform:none;}
+    .modal h2{margin-bottom:1rem;text-transform:lowercase}
+    .modal p, .modal li{color:#ccc;text-transform:lowercase;line-height:1.4;font-size:.95rem}
+    .modal ul{list-style:disc inside;margin-left:1rem;margin-bottom:1rem}
+    .modal textarea{width:100%;height:120px;background:#000;color:#fff;border:1px solid #444;border-radius:4px;padding:.8rem;font-family:monospace;font-size:.9rem;margin-bottom:1rem}
 
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
-    .card { background: rgba(20,20,20,0.8); border: 1px solid #333; border-radius: 8px; backdrop-filter: blur(6px); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform .3s, border-color .3s, background .3s; }
-    .card:hover { transform: translateY(-4px); border-color: #555; background: rgba(30,30,30,0.9); }
-    .card svg { width: 40px; height: 40px; margin-bottom: 1rem; fill: #f9d423; }
-    .card h3 { font-size: 1.3rem; color: #fff; margin-bottom: .5rem; text-transform: lowercase; }
-    .card p { font-size: .95rem; color: #ccc; line-height: 1.4; text-transform: lowercase; }
+    footer{margin-top:3rem;text-align:center;color:#555;font-size:.8rem;text-transform:lowercase}
+    footer a{color:#777;transition:color .3s;text-transform:lowercase}
+    footer a:hover{color:#bbb}
 
-    .code-box { display: none; margin: 2rem 0; padding: 1.5rem; background: rgba(20,20,20,0.8); border: 1px solid #444; border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.8); backdrop-filter: blur(4px); animation: fadeIn 1s both; }
-    .code-box header { display: flex; justify-content: space-between; align-items: center; padding-bottom: .5rem; border-bottom: 1px solid #333; color: #bbb; }
-    .code-box header span { font-size: .9rem; text-transform: lowercase; }
-    .btn-copy-code { padding: .3rem .6rem; background: #444; border: none; border-radius: 4px; color: #eee; cursor: pointer; transition: background .3s; text-transform: lowercase; }
-    .btn-copy-code:hover { background: #555; }
-    pre { margin: 0; padding-top: 1rem; overflow-x: auto; color: #eee; font-size: .95rem; }
-
-    footer { margin-top: 3rem; text-align: center; color: #555; font-size: .8rem; text-transform: lowercase; }
-    footer a { color: #777; transition: color .3s; text-transform: lowercase; }
-    footer a:hover { color: #bbb; }
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
   <div class="container">
     <section class="hero">
       <h1>jann hub</h1>
-      <p>the ultimate total roblox drama toolkit</p>
       <div class="btn-group">
-        <button id="showScript" class="btn">view script</button>
-        <button id="copyLoad" class="btn">copy loadstring</button>
-        <a href="https://discord.gg/jannproducts" class="btn" target="_blank">join discord</a>
+        <button id="showKey" class="btn">key system</button>
+        <button id="showGood" class="btn">good features</button>
+        <button id="showBoost" class="btn">good discord booster perks</button>
+        <button id="showFAQ" class="btn">faq</button>
+        <button id="showFeat" class="btn">features</button>
+        <button id="showToggles" class="btn">toggles</button>
+        <button id="showTele" class="btn">teleports</button>
+        <button id="showActions" class="btn">special actions</button>
       </div>
     </section>
 
@@ -56,38 +59,130 @@
       <div class="card">
         <svg viewBox="0 0 24 24"><path d="M7 2a1 1 0 00-1 1v2H4a1 1 0 100 2h2v2a1 1 0 102 0V7h2a1 1 0 100-2H7V3a1 1 0 00-1-1z"/></svg>
         <h3>key system</h3>
-        <p>join our discord and retrieve your key instantly to unlock jann hub</p>
+        <p>all you have to do is use the key link, join the discord via the button, wait 30 seconds, go back, and you should be able to unlock it!</p>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24"><path d="M12 2l1.176 3.618h3.807l-3.08 2.238 1.176 3.618L12 9.236l-3.079 2.238 1.176-3.618-3.08-2.238h3.806L12 2z"/></svg>
         <h3>good features</h3>
-        <p>auto-win blockpush, kill everyone in sword fight, see jury votes, teleports</p>
+        <p>auto-win blockpush<br>kill everyone in sword fight<br>see jury votes<br>teleports</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>
+        <h3>good discord booster perks</h3>
+        <p>1 boost gets you a 30 day key<br>3 boosts get you admin commands that work on jann hub users + a 1 year key</p>
       </div>
     </section>
-
-    <section class="code-box" id="codeBox">
-      <header>
-        <span>script.lua</span>
-        <button class="btn-copy-code" id="copyBtn">copy</button>
-      </header>
-      <pre><code class="language-lua" id="codeText">loadstring(game:HttpGet("https://pastebin.com/raw/WHVAishp"))()</code></pre>
-    </section>
-
-    <footer>
-      creator: <a href="https://discord.com/users/899075667700883556" target="_blank">@energypetals</a> • support: <a href="https://discord.gg/jannproducts" target="_blank">jannproducts</a>
-    </footer>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" id="modal">
+      <button class="copy-key" id="copyModal">copy</button>
+      <span class="close" id="closeModal">×</span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    creator: <a href="https://discord.com/users/899075667700883556" target="_blank">@energypetals</a> • support: <a href="https://discord.gg/jannproducts" target="_blank">jannproducts</a>
+  </footer>
+
   <script>
-    const codeBox = document.getElementById('codeBox');
-    document.getElementById('showScript').onclick = () => {
-      codeBox.style.display = codeBox.style.display === 'block' ? 'none' : 'block';
-      codeBox.scrollIntoView({ behavior: 'smooth' });
+    const modalBg = document.getElementById('modalBg');
+    const modal = document.getElementById('modal');
+    const titleEl = document.getElementById('modalTitle');
+    const contentEl = document.getElementById('modalContent');
+    const copyBtn = document.getElementById('copyModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    const data = {
+      key: {
+        title:'key system',
+        html:'<p>all you have to do is use the key link, join the discord via the button, wait 30 seconds, go back, and you should be able to unlock it!</p>'
+      },
+      good: {
+        title:'good features',
+        html:'<p>auto-win blockpush<br>kill everyone in sword fight<br>see jury votes<br>teleports</p>'
+      },
+      boost: {
+        title:'good discord booster perks',
+        html:'<ul><li>1 boost gets you a 30 day key</li><li>3 boosts get you admin commands that work on jann hub users + a 1 year key</li></ul>'
+      },
+      faq: {
+        title:'faq',
+        html:'<ul>'+
+             '<li><strong>q: will we branch into other games?</strong><br>a: soon, there isn\'t a confirmed date and it\'s not confirmed at all.</li>'+
+             '<li><strong>q: why can\'t you add my idea?</strong><br>a: we could be busy, there\'s no possible way, or we are just lazy.</li>'+
+             '<li><strong>q: how do i get a key?</strong><br>a: get a key from here: https://keyrblx.com/getkey/JannHub. once you have joined the discord server, go back to the page and wait 30 seconds. it should then allow you to press \'continue\' and you will get a key. please note if any popups show, just close them and go back to the key site.</li>'+
+             '<li><strong>q: how do i make my character my own avatar?</strong><br>a: wait until it\'s free gender selection, when the timer hits 00:03, click the 3 lines and press return to lobby, then wait 20 seconds & join back, then execute the script and buy your character.</li>'+
+             '<li><strong>q: why won\'t the ui load?</strong><br>a: it\'s because we\'re often adding new features, however sometimes there are errors and it causes the ui to not load.</li>'+
+             '<li><strong>q: why won\'t a feature work?</strong><br>a: we aren\'t that good of script developers, so some features won\'t work.</li>'+
+             '</ul>'
+      },
+      feat: {
+        title:'features',
+        html:'<ul>'+
+             '<li><strong>infinite yield</strong>: loads the infinite yield command script.</li>'+
+             '<li><strong>mobile keyboard</strong>: loads a mobile-compatible keyboard script.</li>'+
+             '<li><strong>chat spy</strong>: loads a script to spy on chat.</li>'+
+             '<li><strong>fake lag</strong>: simulates fake lag in the game.</li>'+
+             '<li><strong>energize</strong>: loads an animation script to energize your character.</li>'+
+             '<li><strong>shaders</strong>: loads rtx shaders to enhance the visual experience.</li>'+
+             '<li><strong>see everyone's users</strong>: displays usernames above players' heads.</li>'+
+             '<li><strong>win obby</strong>: automatically teleports you to the finish line in an obby.</li>'+
+             '<li><strong>get safety statue</strong>: teleports the safety statue to your character.</li>'+
+             '<li><strong>kill everyone in sword fight</strong>: executes a script to kill all players in a sword-fighting game.</li>'+
+             '<li><strong>expand everyone's hitbox</strong>: expands or modifies players' hitboxes.</li>'+
+             '<li><strong>insta-eat pancake</strong>: automatically eats your pancake in the game.</li>'+
+             '</ul>'
+      },
+      toggles: {
+        title:'toggles',
+        html:'<ul>'+
+             '<li><strong>auto-collect coins & gems</strong>: automatically collects coins and gems.</li>'+
+             '<li><strong>notify votes</strong>: sends a notification when a vote is cast.</li>'+
+             '<li><strong>expose votes</strong>: sends vote details in chat.</li>'+
+             '<li><strong>store vote logs</strong>: stores vote information in a vote logs category.</li>'+
+             '<li><strong>auto-win math mania</strong>: automatically solves and wins the Math Mania game.</li>'+
+             '<li><strong>notify when a user gets the statue</strong>: notifies when a user collects the statue.</li>'+
+             '</ul>'
+      },
+      tele: {
+        title:'teleports',
+        html:'<ul>'+
+             '<li><strong>confessionals</strong>: teleports to the confessionals.</li>'+
+             '<li><strong>challenge</strong>: teleports to the challenge area.</li>'+
+             '<li><strong>exile</strong>: teleports to the exile location.</li>'+
+             '<li><strong>spectator island</strong>: teleports to the spectator island.</li>'+
+             '<li><strong>dock</strong>: teleports to the dock.</li>'+
+             '<li><strong>voting area</strong>: teleports to the voting area.</li>'+
+             '</ul>'
+      },
+      actions: {
+        title:'special actions',
+        html:'<ul>'+
+             '<li><strong>break spleef</strong>: removes all spleef parts beneath your character by interacting with them.</li>'+
+             '</ul>'
+      }
     };
-    function copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => alert('copied!')); }
-    document.getElementById('copyLoad').addEventListener('click', () => copyToClipboard(document.getElementById('codeText').textContent));
-    document.getElementById('copyBtn').addEventListener('click', () => copyToClipboard(document.getElementById('codeText').textContent));
+
+    function openModal(key){
+      const info = data[key];
+      titleEl.textContent = info.title;
+      contentEl.innerHTML = info.html;
+      modalBg.style.display = 'flex';
+    }
+    document.getElementById('showKey').onclick = ()=>openModal('key');
+    document.getElementById('showGood').onclick = ()=>openModal('good');
+    document.getElementById('showBoost').onclick = ()=>openModal('boost');
+    document.getElementById('showFAQ').onclick = ()=>openModal('faq');
+    document.getElementById('showFeat').onclick = ()=>openModal('feat');
+    document.getElementById('showToggles').onclick = ()=>openModal('toggles');
+    document.getElementById('showTele').onclick = ()=>openModal('tele');
+    document.getElementById('showActions').onclick = ()=>openModal('actions');
+
+    closeBtn.onclick = ()=>{modalBg.style.display='none'};
+    copyBtn.onclick = ()=>{navigator.clipboard.writeText(contentEl.textContent);};
   </script>
 </body>
 </html>
