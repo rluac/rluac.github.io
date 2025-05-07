@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Total Roblox Drama Script</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:#000;color:#eee;min-height:100vh;display:flex;align-items:center;justify-content:center}
+    .container{max-width:800px;width:100%;padding:2rem;}
+
+    .hero{text-align:center;padding:3rem 1rem;animation:fadeIn 1s both}
+    .hero h1{font-size:2.8rem;background:linear-gradient(90deg,#ff4e50,#f9d423);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadeInUp 1s both;}
+    .hero p{margin-top:.5rem;color:#888;animation:fadeInUp 1.2s both}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    .btn-group{margin:2rem 0;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{position:relative;padding:.7rem 1.8rem;border-radius:4px;font-weight:600;text-transform:uppercase;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .btn:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,.1);transform:skewX(-20deg);transition:left .5s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.5)}
+    .btn:hover:before{left:100%}
+    .btn-copy{background:#ff4e50;color:#fff}
+    .btn-discord{background:#5865F2;color:#fff}
+
+    .code-box{background:#111;border-radius:4px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.7);margin:2rem 0;animation:fadeIn 1.2s both}
+    .code-box header{padding:.6rem 1rem;background:#222;font-size:.9rem;color:#bbb;display:flex;justify-content:space-between;align-items:center}
+    .code-box header .btn-copy-code{font-size:.8rem;padding:.3rem .5rem;background:#ff4e50;color:#fff;border:none;border-radius:3px;cursor:pointer;transition:background .3s}
+    .code-box header .btn-copy-code:hover{background:#e04444}
+    pre{margin:0;padding:1rem;overflow-x:auto}
+
+    footer{margin-top:3rem;text-align:center;color:#777;font-size:.8rem}
+    footer a{color:#888;transition:color .3s}
+    footer a:hover{color:#fff}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1>The best Total Roblox Drama script</h1>
+      <p>(that isn’t skidded)</p>
+      <div class="btn-group">
+        <button class="btn btn-copy" id="copyLoad">Copy Loadstring</button>
+        <a href="https://discord.gg/jannproducts" target="_blank" class="btn btn-discord">Join Discord</a>
+      </div>
+    </section>
+
+    <section class="code-box">
+      <header>
+        <span>script.lua</span>
+        <button class="btn-copy-code" id="copyBtn">Copy</button>
+      </header>
+      <pre><code class="language-lua" id="codeText">loadstring(game:HttpGet("https://raw.githubusercontent.com/rluac/JannHub/refs/heads/main/loader.lua"))()</code></pre>
+    </section>
+
+    <footer>
+      Creator: <a href="https://discord.com/users/899075667700883556" target="_blank">@energypetals</a> • Support: <a href="https://discord.gg/jannproducts" target="_blank">jannproducts</a>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script>
+    function copyToClipboard(text){navigator.clipboard.writeText(text).then(()=>alert('Copied!'));}
+    document.getElementById('copyLoad').addEventListener('click',()=>copyToClipboard(document.getElementById('codeText').textContent));
+    document.getElementById('copyBtn').addEventListener('click',()=>copyToClipboard(document.getElementById('codeText').textContent));
+  </script>
+</body>
+</html>
